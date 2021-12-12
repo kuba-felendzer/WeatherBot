@@ -77,7 +77,7 @@ async def whatdoido(ctx):
 @bot.command()
 async def poll(ctx, *, question):
     qmark = "?" if (question[-1] != "?") else ""
-    msg = await ctx.send(f"**{question}{qmark}**")
+    msg = await ctx.send(f"*{question}{qmark}*")
     await msg.add_reaction("👍") # thumbs up emoji
     await msg.add_reaction("👎") # thumbs down emoji
 
