@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import asyncio 
 
+import random
+
 import python_weather
 
 token = open("data/TOKEN", "r").read()
@@ -43,5 +45,40 @@ async def weather(ctx):
     await ctx.send(embed=embed)
     
     await client.close()
+
+@bot.command()
+async def whatdoido(ctx):
+    things_to_do = ["go outside lol", 
+                    "practice", 
+                    "uninstall league", 
+                    "uninstall dota", 
+                    "bump donda", 
+                    "read a book once in your life dickshit", 
+                    "make fun of zach hall", 
+                    "finish your hw", 
+                    "contemplate the impermanence of marching band, time, and our own existence", 
+                    "cry.", 
+                    "add something new to the list",
+                    "nothing",
+                    "throw a lifesaver at a duck (don't)",
+                    "learn to program bots so kuba is out of a job",
+                    "watch some yt or smth what do kids even do these days",
+                    "just think about it",
+                    "¯\_(ツ)_/¯",
+                    ":)",
+                    "xD rip bozo mf can't even figure it out himself lmfao",
+                    "<@498969025733197844>",
+                    "<@446437469424975882>",
+                    "find kuba's bell cover"
+                    ]
+
+    await ctx.send(random.choice(things_to_do))
+
+@bot.command()
+async def poll(ctx, *, question):
+    qmark = "?" if (question[-1] != "?") else ""
+    msg = await ctx.send(f"**{question}{qmark}**")
+    await msg.add_reaction("👍") # thumbs up emoji
+    await msg.add_reaction("👎") # thumbs down emoji
 
 bot.run(token)
